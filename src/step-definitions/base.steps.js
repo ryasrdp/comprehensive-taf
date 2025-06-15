@@ -1,4 +1,3 @@
-//import { Given, Then, When } from '@cucumber/cucumber';
 import { createBdd } from 'playwright-bdd';
 import { BasePage } from '../pageObjects/index.js';
 import { expect } from '@playwright/test';

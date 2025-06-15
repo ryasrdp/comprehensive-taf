@@ -9,15 +9,6 @@ export class BasePage {
     this.fieldLocatorByName = fieldName => page.locator(`//label[contains(text(), "${fieldName}")]/following-sibling::input`);
   }
 
-//  /**
-//   * Locates a field by its name.
-//   * @param {string} fieldName - The name of the field.
-//   * @returns {locator} - Playwright Locator for the field.
-//   */
-//  fieldLocatorByName(fieldName) {
-//    return this.page.locator(`//label[contains(text(), "${fieldName}")]/following-sibling::input`);
-//  }
-
   async clickOnButton(name) {
     await this.page.getByRole('button', { name }).click();
   }
