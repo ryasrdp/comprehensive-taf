@@ -1,8 +1,11 @@
 @form
-Feature: Fill Petition to leave planet Earth
+Feature: EHU-ATJS-20671. Fill Petition to leave planet Earth
 
+  As a user,
+  I want to fill in all mandatory fields in the form,
+  I can successfully submit the form and verify that the data was saved correctly.
 
-    Scenario: Navigate and fill mandatory field form
+    Scenario: Fill mandatory field form
       Given Open web page url "https://ryasrdp.github.io/"
         And Create "USER" "1" using storage
       Then Check section "Personal Information" is present on "Petition to leave planet Earth" form
@@ -10,7 +13,7 @@ Feature: Fill Petition to leave planet Earth
         And Click on "Submit" button
       Then Check Field "First Name" contain value "USER" "1" "First Name" on submitted Petition form
         And Check Field "Last Name" contain value "USER" "1" "Last Name" on submitted Petition form
-    @run
+
     Scenario: Check mandatory fields on Petition to leave planet Earth
       Given Open web page url "https://ryasrdp.github.io/"
         And Create "USER" "1" using storage {"GraduateSchoolName": "Sausio 13"}
