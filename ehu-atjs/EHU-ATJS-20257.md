@@ -1,6 +1,6 @@
 ## EHU-ATJS-20257
 
-### Title: Add "Solar System" Field to the Petition for Space Travel Form
+### Title: Add "Solar System" Field in "Address Information" section to the Petition for Space Travel Form
 
 **As** a user,  
 **I want** to provide the name of my solar system in the Petition for Space Travel form  

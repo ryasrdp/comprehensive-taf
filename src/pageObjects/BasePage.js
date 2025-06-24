@@ -10,7 +10,6 @@ export class BasePage {
       page.locator(`//label[contains(text(), "${fieldName}")]/following-sibling::input`);
     this.fieldBySectionLocatorByName = (fieldName, sectionName) => page.locator('//*[@class="section-title" and ' +
       `contains(text(),"${sectionName}")]/..//label[contains(text(),"${fieldName}")]`);
-    //
   }
 
   async clickOnButton(name) {
