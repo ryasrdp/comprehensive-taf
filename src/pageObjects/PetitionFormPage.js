@@ -56,6 +56,7 @@ export default class PetitionFormPage extends BasePage {
       return false;
     }
   }
+
   async checkVisibilityOfField(sectionName, fieldName) {
     const sectionOnForm = this.fieldOnSectionLocator(sectionName, fieldName);
     try {

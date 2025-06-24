@@ -32,7 +32,8 @@ When('Select {string} value in {string} field', async ({ page }, value, fieldNam
   await basePage.selectFieldValueByName(fieldName, value);
 });
 
-When(/^Select "([^"]*)" value in "([^"]*)" field on "([^"]*)" section$/, async ({ page }, value, fieldName, sectionName) => {
+When(/^Select "([^"]*)" value in "([^"]*)" field on "([^"]*)" section$/,
+  async ({ page }, value, fieldName, sectionName) => {
   const basePage = new BasePage(page);
   await basePage.selectSectionFieldValueByName(fieldName, value, sectionName);
 });
