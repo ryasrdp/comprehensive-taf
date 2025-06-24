@@ -1,0 +1,30 @@
+Test Case: Full Validation of "Employer City" Field
+
+Test Steps:
+1.Scroll to the "Employment Information" section
+2.Verify that the "Employer City" field is visible
+3.Verify that the placeholder text is shown:"Enter city"
+4.Leave the field empty and click the Submit button
+5.Verify that the form submits successfully without errors
+6.Enter invalid input:"@4561!"
+7.Verify that you got validation message"Field must contain valid characters" is shown
+8.Enter valid input:"New York"
+9.Verify that no validation error appears
+10.Check that your input exists in output table
+
+Test Data:
+Empty:""
+Invalid:"@4561!"
+Valid:"New York"
+
+Expected Result:
+1.The field is present and optional,it contains placeholder.
+2.Invalid input triggers error
+3.Valid input is accepted
+4.Data is shown in the output table after form submission
+
+Edge Cases:
+1.Spaces and numbers and symbols like "@!&?" and so on should trigger validation error
+2.Very long city name  "AReallyLongCityNameThatExceedsNormalLength..."	should be accepted or limited correctly
+3.Mixed valid/invalid "New York!23" should trigger validation if symbols are not allowed
+4.Unicode characters	"München", "São Paulo", "北京"	should be accepted if Unicode supported
