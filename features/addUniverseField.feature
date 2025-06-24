@@ -9,7 +9,8 @@ Feature: EHU-ATJS-20296. Add "Universe" Field to the Previous Travel Information
     Given Open web page url "https://ryasrdp.github.io/"
     And Create "USER" "1" using storage
     Then Check section "Personal Information" is present on "Petition to leave planet Earth" form
-    And Select "<universe_value>" value in "Universe" Date field
+    Then Check field "Universe" is present on "Previous Travel Information" section
+    And Select "<universe_value>" value in "Universe" field on "Previous Travel Information" section
     And Fill Mandatory Petition Form for "USER" "1"
     And Click on "Submit" button
     Then Check Field "First Name" contain value "USER" "1" "First Name" on submitted Petition form

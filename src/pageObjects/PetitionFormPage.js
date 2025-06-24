@@ -9,7 +9,11 @@ export default class PetitionFormPage extends BasePage {
     this.sectionLocator = (sectionName, formName) =>
       page.locator(`//*[contains(text(),
    "${formName}")]/following-sibling::form//*[@class="section-title" and contains(text(), "${sectionName}")]`);
+    this.fieldOnSectionLocator = (sectionName, fieldName) => page.locator('//*[@class="section-title" and ' +
+      `contains(text(),"${sectionName}")]/..//label[contains(text(),"${fieldName}")]`);
     this.petitionFormField = field => page.locator(`//*[@data-anchor="${field}"]`);
+    this.petitionFormFieldOnSection = (section, field) =>
+      page.locator(`//th[contains(text(),"${section}")]/../../..//*[@data-anchor="${field}"]`);
     this.backgroundCheckConsentCheckBox = page.locator('#backgroundCheckConsent');
     this.termsAgreementCheckBox = page.locator('#termsAgreement');
     this.firstNameField = page.locator('//input[@id="firstName"]');
@@ -49,6 +53,16 @@ export default class PetitionFormPage extends BasePage {
     } catch (error) {
       // eslint-disable-next-line
       console.error(`Error checking visibility of section "${sectionName}" in form "${formName}":`, error);
+      return false;
+    }
+  }
+  async checkVisibilityOfField(sectionName, fieldName) {
+    const sectionOnForm = this.fieldOnSectionLocator(sectionName, fieldName);
+    try {
+      return await sectionOnForm.isVisible();
+    } catch (error) {
+      // eslint-disable-next-line
+      console.error(`Error checking visibility of field "${fieldName}" in section "${sectionName}":`, error);
       return false;
     }
   }

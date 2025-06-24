@@ -8,6 +8,9 @@ export class BasePage {
     this.formField = fieldName => page.locator(`//label[contains(text(), "${fieldName}")]/following-sibling::input`);
     this.fieldLocatorByName = fieldName =>
       page.locator(`//label[contains(text(), "${fieldName}")]/following-sibling::input`);
+    this.fieldBySectionLocatorByName = (fieldName, sectionName) => page.locator('//*[@class="section-title" and ' +
+      `contains(text(),"${sectionName}")]/..//label[contains(text(),"${fieldName}")]`);
+    //
   }
 
   async clickOnButton(name) {
@@ -67,5 +70,18 @@ export class BasePage {
   async selectDropdownValueByName(dropdownName, value) {
     await this.dropdownLocatorByName(dropdownName).click();
     await this.dropdownLocatorByName(dropdownName).selectOption(value);
+  }
+
+  async selectSectionFieldValueByName(fieldName, value, sectionName = null) {
+    const field = this.fieldBySectionLocatorByName(fieldName, sectionName);
+    await field.waitFor({ state: 'visible' });
+    const isEditable = await field.isEditable();
+    if (!isEditable) {
+      // eslint-disable-next-line
+      console.warn(`Field "${fieldName}" is not editable.`);
+      return false;
+    }
+    await field.fill(value);
+    return true;
   }
 }
