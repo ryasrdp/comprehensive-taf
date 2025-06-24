@@ -3,7 +3,7 @@ import { Given, When, Then } from '@cucumber/cucumber';
 import { expect } from '@playwright/test';
 import PetitionFormPage from '../src/pageObjects/PetitionFormPage.js';
 
- let petitionForm;
+let petitionForm;
 
 Given('the user is on the Petition for Space Travel form', async function () {
     await this.page.goto('https://ryasrdp.github.io/');
