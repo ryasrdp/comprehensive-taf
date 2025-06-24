@@ -1,3 +1,4 @@
+@EmployerCity
 Feature: Employer City field validation in Petition Form
 
 Scenario:Validate Employer City input and submission
