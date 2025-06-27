@@ -66,3 +66,31 @@ When('Fill Mandatory Petition Form for {string} {string}', async ({ page }, stud
   const petitionFormPage = new PetitionFormPage(page);
   await petitionFormPage.fillPetitionMandatoryFormFields(student, number);
 });
+
+When(
+  'Enter value {string} into field {string}',
+  async ({ page }, value, fieldName) => {
+    const petitionFormPage = new PetitionFormPage(page);
+    await petitionFormPage.selectFieldValueByName(fieldName, value);
+  }
+);
+
+Then(
+  'Check that field {string} has value {string}',
+  async ({ page }, fieldName, expectedValue) => {
+    const petitionFormPage = new PetitionFormPage(page);
+    const field = petitionFormPage.fieldLocatorByName(fieldName);
+    const actualValue = await field.inputValue();
+    expect(actualValue).toBe(expectedValue);
+  }
+);
+
+When(
+  /^Fill "([^"]+)" field on "([^"]+)" section with value "([^"]+)"$/,
+  async ({ page }, fieldName, sectionName, value) => {
+    const petitionFormPage = new PetitionFormPage(page);
+    await petitionFormPage.fillFieldInSection(sectionName, fieldName, value);
+  },
+);
+
+
