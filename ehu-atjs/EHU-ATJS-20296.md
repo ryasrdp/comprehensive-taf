@@ -15,3 +15,41 @@ Currently, the Petition for Space Travel form does not include a field for speci
 3. The field must display its placeholder when empty.
 4. Validation errors shall display the message: *"Field must contain valid characters."*
 5. After clicking the **Submit** button, the output table must display the submitted data, including the **Universe** field, if provided.
+
+---
+
+## 1 Story Points
+
+# Test case: Validation and Functionality of the "Universe" Field
+
+---
+
+## Test Case ID: EHU-ATJS-20296_001
+## Test Case Title: Validate Universe" Field for input restrictions, default value, and visibility.
+
+### Preconditions
+1. User has access to the Petition for Space Travel Form.
+
+### *Test steps*
+
+#### Step 1. Verify visibility
+- Navigate to the Petition for Space Travel Form. Ensure the section is visible
+- Ensure the "Universe" Field is visible
+
+#### Step 2. Verify default value (field empty)
+
+#### Step 3. Validate Input restrictions
+*Positive test Cases:*
+*Negative test Cases:*
+
+#### Step 4 Boundary testing:
+- Enter maximum allowed characters
+
+#### Expected Results:
+1. The "Universe" field is visible in 'Create Form' and 'View Section'
+2. Default value of the Universe field is empty.
+3. Field accept valid inputs and rejects invalid inputs with the error message *Field must contain valid characters*
+4. Bounduary testing reults align with the fields character limits.
+
+#### Postconditions:
+ - The "Universe" field functions correctly according to the specified requirements.

@@ -21,6 +21,19 @@ Then(
 );
 
 Then(
+  /^Check field "([^"]*)" is (present|absent) on "([^"]*)" section$/,
+  async ({ page }, fieldName, isPresent, sectionName) => {
+    const petitionFormPage = new PetitionFormPage(page);
+    const fieldVisible = await petitionFormPage.checkVisibilityOfField(sectionName, fieldName);
+    if (isPresent === 'present') {
+      expect(fieldVisible).toBeTruthy();
+    } else if (isPresent === 'absent') {
+      expect(fieldVisible).toBeFalsy();
+    }
+  },
+);
+
+Then(
   'Check Field {string} contain value {string} {string} {string} on submitted Petition form',
   async ({ page }, fieldName, user, userNumber, fieldValue) => {
     const userFieldsMap = Randomizer.getKeyByValue(data.userDataFields, fieldValue);
@@ -36,6 +49,15 @@ Then(
   async ({ page }, fieldName, fieldValue) => {
     const petitionFormPage = new PetitionFormPage(page);
     const petitionFieldValue = await petitionFormPage.petitionFormField(fieldName).textContent();
+    await expect(fieldValue).toBe(petitionFieldValue);
+  },
+);
+
+Then(
+  'Check Field {string} on {string} section contain value {string} on submitted Petition form',
+  async ({ page }, fieldName, sectionName, fieldValue) => {
+    const petitionFormPage = new PetitionFormPage(page);
+    const petitionFieldValue = await petitionFormPage.petitionFormFieldOnSection(sectionName, fieldName).textContent();
     await expect(fieldValue).toBe(petitionFieldValue);
   },
 );
