@@ -1,27 +1,17 @@
-Feature: Submit Petition for Space Travel
+Feature: Add "Income Type" field to Petition for Space Travel Form
 
-  Scenario: Successfully submit a valid petition
-    Given I open the Petition for Space Travel form
-    When I fill in all mandatory fields with valid data
-    And I select options from dropdowns
-    And I enter valid contact and address information
-    And I click the Submit button
-    Then I should see a confirmation message
+  As a user,
+  I want to select the type of income I receive
+  So that authorities can assess my financial situation accurately.
 
-  Scenario: Validation errors on missing mandatory fields
-    Given I open the Petition for Space Travel form
-    When I leave required fields empty
-    And I click the Submit button
-    Then I should see validation messages for each empty mandatory field
+  Scenario: Successfully submit form with selected Income Type
+    Given I am on the Petition for Space Travel form
+    When I select "Salary" from the Income Type dropdown
+    And I submit the form
+    Then the output table should display "Salary" as Income Type
 
-  Scenario: Validation error on invalid email format
-    Given I open the Petition for Space Travel form
-    When I enter an invalid email address
-    And I click the Submit button
-    Then I should see an error message about invalid email format
-
-  Scenario: Mismatched email confirmation
-    Given I open the Petition for Space Travel form
-    When I enter different email addresses in Email and Confirm Email
-    And I click the Submit button
-    Then I should see a message saying emails must match
+  Scenario: Successfully submit form without selecting Income Type
+    Given I am on the Petition for Space Travel form
+    When I do not select any option for Income Type
+    And I submit the form
+    Then the form should be submitted without validation errors
