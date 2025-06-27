@@ -1,3 +1,5 @@
+/* global describe, it, cy, beforeEach */
+
 import petitionForm from '../support/pages/petitionForm.page';
 
 describe('Income Type field in Petition for Space Travel form', () => {
@@ -16,3 +18,4 @@ describe('Income Type field in Petition for Space Travel form', () => {
     petitionForm.getConfirmation().should('be.visible');
   });
 });
+
