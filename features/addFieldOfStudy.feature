@@ -6,12 +6,6 @@ As a user,
 I want to provide my major or field of study in the Petition for Space Travel form
 So that authorities can understand my academic specialization and evaluate my educational background.
 
-  Scenario: Check field "Major/Field of Study" is present on "Education Information" section
-    Given Open web page url "https://ryasrdp.github.io/"
-    And Create "USER" "1" using storage
-    Then Check section "Education Information" is present on "Petition to leave planet Earth" form
-    Then Check field "Major/Field of Study" is present on "Education Information" section
-
   Scenario Outline: Check field "Major/Field of Study" with valid values
     Given Open web page url "https://ryasrdp.github.io/"
     And Create "USER" "1" using storage
@@ -34,6 +28,8 @@ So that authorities can understand my academic specialization and evaluate my ed
     Then Check field "Major/Field of Study" is present on "Education Information" section
     And Fill Mandatory Petition Form for "USER" "1"
     And Click on "Submit" button
+    Then Check section "Education Information" is present on "Petition to leave planet Earth" form
+    Then Check field "Major/Field of Study" is present on "Education Information" section
     Then Check Field "First Name" contain value "USER" "1" "First Name" on submitted Petition form
 
   Scenario Outline: Check field "Major/Field of Study" with edge case values
