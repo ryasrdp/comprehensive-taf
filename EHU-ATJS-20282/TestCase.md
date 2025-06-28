@@ -1,6 +1,5 @@
 # Test Case: Verify "College/University Name" Field Functionality
 
-**Test Case ID**: TC-EHU-20282-01  
 **User Story**: EHU-ATJS-20282  
 **Title**: Add "College/University Name" Field to the Petition for Space Travel Form  
 **Priority**: High  
