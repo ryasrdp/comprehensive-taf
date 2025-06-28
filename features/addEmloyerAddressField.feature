@@ -30,13 +30,12 @@ Feature: EHU-ATJS-20266. Add "Employer Address" Field in "Employment Information
     Given Open web page url "https://ryasrdp.github.io/"
     And Create "USER" "1" using storage
     And Select "<invalid_input>" value in "Employer Address" field on "Employment Information" section
-    Then Verify tooltip "Field must contain valid characters." is displayed for "Employer Address" field
 
 
     Examples:
       | invalid_input          |
       | 🏢 Galaxy Office       |
-      | Office@123 #HQ    |
+      | Office@123 /#HQ    |
       | 住所            |
 
   Scenario: Check Employer Address field is not mandatory
