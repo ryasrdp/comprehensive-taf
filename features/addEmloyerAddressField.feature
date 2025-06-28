@@ -26,11 +26,21 @@ Feature: EHU-ATJS-20266. Add "Employer Address" Field in "Employment Information
       | HQ West - Unit 7               |
       | Building 5. Sector A           |
 
+  Scenario Outline: Check Employer Address field with invalid characters
+    Given Open web page url "https://ryasrdp.github.io/"
+    And Create "USER" "1" using storage
+    And Select "<invalid_input>" value in "Employer Address" field on "Employment Information" section
+    Then Check validation message "Field must contain valid characters." is shown for field "Employer Address"
+
+    Examples:
+      | invalid_input          |
+      | 🏢 Galaxy Office       |
+      | Office@123 #HQ    |
+      | 住所            |
+
   Scenario: Check Employer Address field is not mandatory
     Given Open web page url "https://ryasrdp.github.io/"
     And Create "USER" "1" using storage
     And Fill Mandatory Petition Form for "USER" "1"
     And Click on "Submit" button
     Then Check Field "First Name" contain value "USER" "1" "First Name" on submitted Petition form
-
-    
