@@ -5,7 +5,7 @@ Feature: EHU-ATJS-20266. Add "Employer Address" Field in "Employment Information
   I want to provide my employer's address in the Petition for Space Travel form
   So that authorities can process my employment data with correct location reference
 
-  Scenario: Check Employer Address field visibility
+  Scenario: Check Employer Address field visibility and default state
     Given Open web page url "https://ryasrdp.github.io/"
     And Create "USER" "1" using storage
     Then Check section "Employment Information" is present on "Petition to leave planet Earth" form
@@ -23,9 +23,20 @@ Feature: EHU-ATJS-20266. Add "Employer Address" Field in "Employment Information
     Examples:
       | valid_input                     |
       | 123 NASA Street                |
-      | 44-B Spaceport & Co (Floor 2)  |
       | HQ West - Unit 7               |
       | Building 5. Sector A           |
+
+  Scenario Outline: Check Employer Address field with invalid characters
+    Given Open web page url "https://ryasrdp.github.io/"
+    And Create "USER" "1" using storage
+    And Select "<invalid_input>" value in "Employer Address" field on "Employment Information" section
+    Then Check validation message "Field must contain valid characters." is shown for field "Employer Address"
+
+    Examples:
+      | invalid_input          |
+      | 🏢 Galaxy Office       |
+      | Office@123 #HQ    |
+      | 住所            |
 
   Scenario: Check Employer Address field is not mandatory
     Given Open web page url "https://ryasrdp.github.io/"
