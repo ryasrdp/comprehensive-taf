@@ -66,3 +66,12 @@ When('Fill Mandatory Petition Form for {string} {string}', async ({ page }, stud
   const petitionFormPage = new PetitionFormPage(page);
   await petitionFormPage.fillPetitionMandatoryFormFields(student, number);
 });
+
+
+When(
+  /^Fill "([^"]+)" field on "([^"]+)" section with value "([^"]+)"$/,
+  async ({ page }, fieldName, sectionName, value) => {
+    const petitionFormPage = new PetitionFormPage(page);
+    await petitionFormPage.fillFieldInSection(sectionName, fieldName, value);
+  },
+);

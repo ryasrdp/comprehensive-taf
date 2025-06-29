@@ -16,3 +16,41 @@ Currently, the Petition for Space Travel form does not include a field for speci
 4. The field must display its placeholder when empty.
 5. Validation errors shall display the message: *"Field must contain valid characters."*
 6. After clicking the **Submit** button, the output table must display the submitted data, including the **College/University Name** field, if provided.
+
+
+
+## User Story Estimation
+
+**User Story Number**: EHU-ATJS-20282  
+**Title**: Add "College/University Name" Field to the Petition for Space Travel Form  
+
+---
+
+### Estimation Summary
+
+**Final Estimate**: `2 Story Points`  
+**Estimation Method**: Fibonacci Sequence  
+
+---
+
+## Estimation Breakdown & Justification 
+
+### 1. Write BDD Scenario in Gherkin Syntax – `0.5 Story Points`
+Create a readable **Gherkin** scenario that describes the expected behavior of the new field in the form.  
+This includes both positive and negative test cases (e.g., entering invalid characters).
+
+### 2. Automate the BDD Test – `1 Story Point`
+Automate the Gherkin scenario using the existing test automation framework.  
+This involves setting up selectors, step definitions, and result validation.  
+Requires understanding of the DOM structure and use of the **Page Object Model**.
+
+---
+
+## Overall Justification 
+
+The task involves **writing a BDD scenario and automating it**.  
+No business logic or UI implementation is required — only testing of existing functionality.
+
+The estimate is based on the **Fibonacci sequence**, considering the **moderate complexity** of the automation effort.
+
+### Final Estimate: `2 Story Points`
