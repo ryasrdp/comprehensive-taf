@@ -18,3 +18,123 @@ Currently, the Petition for Space Travel form does not include a field for speci
 6. Validation errors shall display the message: *"Field must contain valid characters."*
 7. After clicking the **Submit** button, the output table must display the submitted data, including the **Current Employer** field, if provided.
 
+---
+
+## Story Points Estimation: 2
+
+### Rationale:
+- **Simple field addition** following existing patterns in codebase
+- **Basic validation** using standard character validation
+- **No complex logic** - field is always visible, not conditional
+- **Existing framework support** - all required step definitions already exist
+- **Low complexity** - straightforward implementation and testing
+
+---
+
+# Comprehensive Test Case Coverage
+
+## Test Case ID: EHU-ATJS-20264_001
+## Test Case Title: Validate "Current Employer" Field functionality
+
+### Preconditions:
+1. User has access to the Petition for Space Travel Form
+2. Form is loaded successfully
+
+### Positive Test Cases:
+
+#### TC-001: Field Visibility
+- **Steps:** Navigate to form -> Locate Employment Information section
+- **Expected:** Current Employer field is visible and accessible
+
+#### TC-002: Valid Input - Basic Text
+- **Steps:** Enter "SpaceX"
+- **Expected:** Input accepted, no validation errors
+
+#### TC-003: Valid Input - With Numbers
+- **Steps:** Enter "Company 42"
+- **Expected:** Input accepted
+
+#### TC-004: Valid Input - With Allowed Symbols
+- **Steps:** Enter "Stark-Industries & Co."
+- **Expected:** Input accepted (-, ', ., space, &, () allowed)
+
+#### TC-005: Form Submission with Current Employer
+- **Steps:** Fill mandatory fields + Current Employer -> Submit
+- **Expected:** Data appears in output table
+
+#### TC-006: Form Submission without Current Employer
+- **Steps:** Fill only mandatory fields -> Submit
+- **Expected:** Form submits successfully (field not mandatory)
+
+### Negative Test Cases:
+
+#### TC-007: Invalid Characters - Non-ASCII
+- **Steps:** Enter "Роскосмос@#$" (Cyrillic + special chars)
+- **Expected:** Validation error: "Field must contain valid characters."
+
+#### TC-008: Invalid Characters - Unicode
+- **Steps:** Enter "Company★☆"
+- **Expected:** Validation error: "Field must contain valid characters."
+
+### Expected Results:
+1. Current Employer field visible in Employment Information section
+2. Proper validation for allowed characters
+3. Non-mandatory field behavior works correctly
+4. Submitted data appears in output table when provided
+5. Form submits successfully when field is empty
+
+### Postconditions:
+- Current Employer field functions according to specifications
+- No impact on existing form functionality
+- Data integrity maintained in submission results
+
+---
+
+## BDD Scenarios Implemented:
+
+```gherkin
+Feature: Current Employer Field in Petition Form
+
+  Background:
+    Given I am on the petition form page
+
+  Scenario: Current Employer field is visible in Employment Information section
+    When I navigate to the "Employment Information" section
+    Then I should see the "Current Employer" field
+
+  Scenario Outline: Current Employer field accepts valid inputs
+    When I navigate to the "Employment Information" section
+    And I enter "<employer>" in the "Current Employer" field
+    Then the field should accept the input without validation errors
+    
+    Examples:
+      | employer             |
+      | SpaceX               |
+      | Company 42           |
+      | Stark-Industries Ltd |
+
+  Scenario: Form submission with Current Employer field
+    When I fill all mandatory fields in the form
+    And I enter "Galactic Industries" in the "Current Employer" field
+    And I submit the form
+    Then the output table should display "Galactic Industries" in the Current Employer field
+
+  Scenario: Form submission without Current Employer field
+    When I fill all mandatory fields in the form
+    And I leave the "Current Employer" field empty
+    And I submit the form
+    Then the form should be submitted successfully
+
+  Scenario: Current Employer field validation for invalid characters
+    When I navigate to the "Employment Information" section
+    And I enter "Company@#$%" in the "Current Employer" field
+    Then I should see the validation error "Field must contain valid characters."
+```
+
+## Automation Limitations:
+
+Validation testing for invalid characters (TC-007, TC-008) could be challenging due to current step definition constraints. The framework may use a generic field locator that cannot always differentiate between different fields across various form sections, which could result in element ambiguity errors.
+
+**Alternative Approach:**
+These validation scenarios are documented for manual testing or future automation when section-specific step definitions become available. The current automated test suite focuses on functional testing using available step definitions that support section-specific field interactions.
+
