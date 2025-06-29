@@ -18,3 +18,98 @@ Currently, the Petition for Space Travel form does not include a field for appli
 6. Validation errors shall display the message: *"Field must not exceed 200 words."*
 7. After clicking the **Submit** button, the output table must display the submitted data, including the **What else would you like to tell us about yourself?** field, if provided.
 
+### Story Point Estimation: 2 Story Points
+
+#### Estimation Rationale
+
+| Task Component           | Complexity | Notes                                          |
+|--------------------------|------------|------------------------------------------------|
+| UI form update           | Low        | Multi-line field and label addition            |
+| Placeholder logic        | Low        | Basic HTML attribute                           |
+| Validation (word count)  | Medium     | Slightly more complex than character counting  |
+| Output rendering         | Low        | Simple update to display entered data          |
+
+---
+
+### Test Case Coverage
+
+| TC ID        | Title                                                             |
+|--------------|-------------------------------------------------------------------|
+| TC-20256-01  | Field is visible in Race Information section                      |
+| TC-20256-02  | Placeholder is shown when field is empty                          |
+| TC-20256-03  | Field is not mandatory                                            |
+| TC-20256-04  | Field accepts and submits exactly 200 words                       |
+| TC-20256-05  | Field rejects input over 200 words with correct validation message|
+| TC-20256-06  | Submitted text appears in the output table                        |
+| TC-20256-07  | Field handles special characters and newlines                     |
+
+---
+
+### Pre-conditions
+
+- The user is on the Petition for Space Travel form page  
+- The form is fully loaded in the browser  
+- No existing validation errors are displayed  
+
+---
+
+### Positive Test Scenarios
+
+**TC-20256-01 — Field is visible**  
+**Steps:**  
+1. Open the form  
+2. Scroll to the Race Information section  
+**Expected Result:**  
+The field "What else would you like to tell us about yourself?" is visible.
+
+**TC-20256-02 — Placeholder is shown**  
+**Steps:**  
+1. Open the form  
+2. Locate the new text area  
+**Expected Result:**  
+Placeholder is displayed when the field is empty.
+
+**TC-20256-03 — Field is optional**  
+**Steps:**  
+1. Leave the field empty  
+2. Fill out all required fields  
+3. Click Submit  
+**Expected Result:**  
+Form is submitted successfully without any validation error.
+
+**TC-20256-04 — Input with exactly 200 words**  
+**Steps:**  
+1. Input exactly 200 words into the field  
+2. Click Submit  
+**Expected Result:**  
+Form is submitted successfully, and the input appears in the output table.
+
+**TC-20256-06 — Data is shown in output table**  
+**Steps:**  
+1. Enter valid text in the field  
+2. Submit the form  
+**Expected Result:**  
+Entered text is correctly displayed in the output summary or table.
+
+---
+
+### Negative Test Scenario
+
+**TC-20256-05 — Input exceeds 200 words**  
+**Steps:**  
+1. Enter more than 200 words in the field  
+2. Click Submit  
+**Expected Result:**  
+Form is not submitted. A validation error appears:  
+"Field must not exceed 200 words."
+
+---
+
+### Special Case
+
+**TC-20256-07 — Special characters and newlines**  
+**Steps:**  
+1. Enter text with line breaks and special characters (e.g., punctuation, symbols)  
+2. Click Submit  
+**Expected Result:**  
+Form accepts the input and displays it with formatting preserved.
