@@ -14,6 +14,7 @@ Feature: EHU-ATJS-20266. Add "Employer Address" Field in "Employment Information
   Scenario Outline: Check Employer Address field with valid ASCII input
     Given Open web page url "https://ryasrdp.github.io/"
     And Create "USER" "1" using storage
+    Then Check field "Employer Address" is present on "Employment Information" section
     And Select "<valid_input>" value in "Employer Address" field on "Employment Information" section
     And Fill Mandatory Petition Form for "USER" "1"
     And Click on "Submit" button
