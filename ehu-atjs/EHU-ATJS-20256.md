@@ -113,38 +113,3 @@ Form is not submitted. A validation error appears:
 2. Click Submit  
 **Expected Result:**  
 Form accepts the input and displays it with formatting preserved.
-
----
-
-### BDD Scenario (Gherkin)
-
-```gherkin
-Feature: Add "What else would you like to tell us about yourself?" field to the Petition for Space Travel Form
-
-  As a user
-  I want to provide additional information about myself
-  So that authorities can gain deeper insights into my background
-
-  Background:
-    Given I am on the Petition for Space Travel form page
-
-  Scenario: Display the field
-    Then I should see a multi-line text field labeled "What else would you like to tell us about yourself?" in the Race Information section
-    And the field should not be marked as mandatory
-    And the field should display a placeholder when empty
-
-  Scenario: Submit valid information
-    When I enter valid text under 200 words
-    And I click Submit
-    Then the output table should include the entered text
-
-  Scenario: Submit empty field
-    When I leave the field empty
-    And I click Submit
-    Then the submission should succeed
-
-  Scenario: Submit over 200 words
-    When I enter more than 200 words
-    And I click Submit
-    Then I should see an error "Field must not exceed 200 words."
-    
