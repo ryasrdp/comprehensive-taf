@@ -11,10 +11,6 @@ Feature: EHU-ATJS-20266. Add "Employer Address" Field in "Employment Information
     Then Check section "Employment Information" is present on "Petition to leave planet Earth" form
     Then Check field "Employer Address" is present on "Employment Information" section
 
-
- @skip
-  # Temporarily skipped due to known bug: Form accepts two locators  with Employer Address 
-
   Scenario Outline: Check Employer Address field with valid ASCII input
     Given Open web page url "https://ryasrdp.github.io/"
     And Create "USER" "1" using storage
