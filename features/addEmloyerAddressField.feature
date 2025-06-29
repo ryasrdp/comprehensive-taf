@@ -23,7 +23,7 @@ Feature: EHU-ATJS-20266. Add "Employer Address" Field in "Employment Information
     And Fill Mandatory Petition Form for "USER" "1"
     And Click on "Submit" button
     Then Check Field "First Name" contain value "USER" "1" "First Name" on submitted Petition form
-    And Check Field "Employer Address" on "6. Employment Information" section contain value "<valid_input>" on submitted Petition form
+    And Check Field "Employer Address" on "5. Employment Information" section contain value "<valid_input>" on submitted Petition form
 
     Examples:
       | valid_input                     |
