@@ -10,10 +10,10 @@ export default class PetitionFormPage extends BasePage {
       page.locator(`//*[contains(text(),
    "${formName}")]/following-sibling::form//*[@class="section-title" and contains(text(), "${sectionName}")]`);
     this.fieldOnSectionLocator = (sectionName, fieldName) => page.locator('//*[@class="section-title" and ' +
-      `contains(text(),"${sectionName}")]/..//label[contains(text(),"${fieldName}")]`);
+      `contains(text(),"${sectionName}")]/..//label[.="${fieldName}"]`);
     this.petitionFormField = field => page.locator(`//*[@data-anchor="${field}"]`);
     this.petitionFormFieldOnSection = (section, field) =>
-      page.locator(`//th[contains(text(),"${section}")]/../../..//*[@data-anchor="${field}"]`);
+      page.locator(`//th[.="${section}"]/../../..//*[@data-anchor="${field}"]`);
     this.backgroundCheckConsentCheckBox = page.locator('#backgroundCheckConsent');
     this.termsAgreementCheckBox = page.locator('#termsAgreement');
     this.firstNameField = page.locator('//input[@id="firstName"]');
