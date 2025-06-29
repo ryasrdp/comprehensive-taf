@@ -8,7 +8,7 @@
     "prettier": "npx prettier --write \"**/*.{js,jsx}\"",
     "eslint": "npx eslint --format codeframe --color ./",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "test": "npx bddgen && npx playwright test",
+    "test": "npx bddgen --tags \"not @skip\" && npx playwright test",
     "test:tag": "npx bddgen && npx playwright test --grep",
     "test-headed:tag": "npx bddgen && npx playwright test --headed --grep"
   },
