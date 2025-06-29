@@ -90,47 +90,6 @@ Currently, the Petition for Space Travel form does not include a field for speci
 
 ---
 
-## BDD Scenarios Implemented:
-
-```gherkin
-Feature: Current Employer Field in Petition Form
-
-  Background:
-    Given I am on the petition form page
-
-  Scenario: Current Employer field is visible in Employment Information section
-    When I navigate to the "Employment Information" section
-    Then I should see the "Current Employer" field
-
-  Scenario Outline: Current Employer field accepts valid inputs
-    When I navigate to the "Employment Information" section
-    And I enter "<employer>" in the "Current Employer" field
-    Then the field should accept the input without validation errors
-    
-    Examples:
-      | employer             |
-      | SpaceX               |
-      | Company 42           |
-      | Stark-Industries Ltd |
-
-  Scenario: Form submission with Current Employer field
-    When I fill all mandatory fields in the form
-    And I enter "Galactic Industries" in the "Current Employer" field
-    And I submit the form
-    Then the output table should display "Galactic Industries" in the Current Employer field
-
-  Scenario: Form submission without Current Employer field
-    When I fill all mandatory fields in the form
-    And I leave the "Current Employer" field empty
-    And I submit the form
-    Then the form should be submitted successfully
-
-  Scenario: Current Employer field validation for invalid characters
-    When I navigate to the "Employment Information" section
-    And I enter "Company@#$%" in the "Current Employer" field
-    Then I should see the validation error "Field must contain valid characters."
-```
-
 ## Automation Limitations:
 
 Validation testing for invalid characters (TC-007, TC-008) could be challenging due to current step definition constraints. The framework may use a generic field locator that cannot always differentiate between different fields across various form sections, which could result in element ambiguity errors.
