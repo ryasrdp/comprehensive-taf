@@ -17,7 +17,7 @@ Feature: EHU-ATJS-20256. Add "* What else would you like to tell us about yourse
     And Fill Mandatory Petition Form for "USER" "1"
     And Click on "Submit" button
     Then Check Field "First Name" contain value "USER" "1" "First Name" on submitted Petition form
-
+  
   Scenario Outline: Check custom info field accepts valid values
     Given Open web page url "https://ryasrdp.github.io/"
     And Create "USER" "1" using storage
@@ -25,7 +25,7 @@ Feature: EHU-ATJS-20256. Add "* What else would you like to tell us about yourse
     And Select "<input_text>" value in "* What else would you like to tell us about yourself??" field on "Race Information" section
     And Fill Mandatory Petition Form for "USER" "1"
     And Click on "Submit" button
-    Then Check Field "What else would you like to tell us about yourself?" on "Race Information" section contain value "<input_text>" on submitted Petition form
+    Then Check Field "Additional Info" on "3. Additional Information" section contain value "<input_text>" on submitted Petition form
 
     Examples:
       | input_text                                                                                      |
@@ -46,7 +46,7 @@ Feature: EHU-ATJS-20256. Add "* What else would you like to tell us about yourse
   # because the application does not display any validation error 
   # when the "What else would you like to tell us about yourself?" field exceeds 200 words.
 
-  Scenario: Accept input with exactly 200 words
+  Scenario Outline: Accept input with exactly 200 words
     Given Open web page url "https://ryasrdp.github.io/"
     And Create "USER" "1" using storage
     Then Check field "* What else would you like to tell us about yourself??" is present on "Race Information" section
