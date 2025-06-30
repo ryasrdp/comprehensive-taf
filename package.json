@@ -10,7 +10,8 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "test": "npx bddgen --tags \"not @skip\" && npx playwright test",
     "test:tag": "npx bddgen && npx playwright test --grep",
-    "test-headed:tag": "npx bddgen && npx playwright test --headed --grep"
+    "test-headed:tag": "npx bddgen && npx playwright test --headed --grep",
+    "test:college": "npx bddgen && npx playwright test features/addCollegeLocation.feature"
   },
   "repository": {
     "type": "git",
