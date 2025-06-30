@@ -51,10 +51,17 @@ export default class PetitionFormPage extends BasePage {
     await this.termsAgreementCheckBox.click();
   }
 
-  async fillPreviousEmployerCity(value) {
-    await this.previousEmployerCityField.fill(value);
-    await this.previousEmployerCityField.blur();
+ async fillPreviousEmployerCity(value) {
+  await this.selectSectionFieldValueByName('Previous Employer City', value, 'Employment Information');
   }
+
+ async uncheckCheckboxByLabel(checkboxLabel) {
+  const checkbox = this.page.getByLabel(checkboxLabel);
+  await checkbox.waitFor({ state: 'visible', timeout: 5000 });
+  if (await checkbox.isChecked()) {
+    await checkbox.uncheck();
+  }
+}
 
   async getValidationErrorMessage(fieldName) {
     const errorLocator = this.fieldValidationError(fieldName);

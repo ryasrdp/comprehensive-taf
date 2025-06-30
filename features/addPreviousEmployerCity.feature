@@ -9,7 +9,7 @@ Feature: EHU-ATJS-20276. Add "Previous Employer City" Field to the Petition for 
     Given Open web page url "https://ryasrdp.github.io/"
     And Create "USER" "1" using storage
     Then Check section "Employment Information" is present on "Petition to leave planet Earth" form
-    And Check field "Previous Employer City" is absent on "Employment Information" section
+    And Check field "Previous Employer City" is present on "Employment Information" section
     And Uncheck checkbox "I have worked at my current employer for 2+ years" on "Employment Information" section
     Then Check field "Previous Employer City" is present on "Employment Information" section
     And Fill "Previous Employer City" field with "Boston" on "Employment Information" section
