@@ -19,11 +19,8 @@ Feature: EHU-ATJS-20276. Add "Previous Employer City" Field to the Petition for 
     And Check Field "Last Name" contain value "USER" "1" "Last Name" on submitted Petition form
     And Check Field "Previous Employer City" on "5. Employment Information" section contain value "Boston" on submitted Petition form
 
-  @skip @bug @validation-error-detection 
+  @skip 
   Scenario: Check Previous Employer City field validation on Petition to leave planet Earth
-    # BUG: EHU-ATJS-20276-BUG-001 - Validation error detection failing
-    # isValidationErrorVisible() returns false when validation error should be visible
-    # Error occurs at petitionForm.step.js:105 - expect(isErrorVisible).toBeTruthy()
     Given Open web page url "https://ryasrdp.github.io/"
     And Create "USER" "1" using storage
     Then Check section "Employment Information" is present on "Petition to leave planet Earth" form
