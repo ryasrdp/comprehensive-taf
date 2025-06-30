@@ -79,7 +79,9 @@ export default class PetitionFormPage extends BasePage {
   const errorLocator = this.page.locator(`#${fieldId} ~ .error, #${fieldId} ~ .invalid-feedback`);
   const isVisible = await errorLocator.isVisible();
 
-  if (!isVisible) return null;
+  if (!isVisible) {
+return null;
+}
 
   return await errorLocator.textContent();
 }

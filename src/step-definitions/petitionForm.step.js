@@ -69,7 +69,7 @@ Then(
     const actualErrorMessage = await petitionFormPage.getValidationErrorForField(fieldLabel);
 
     expect(actualErrorMessage).toBe(errorMessage);
-  }
+  },
 );
 
 
