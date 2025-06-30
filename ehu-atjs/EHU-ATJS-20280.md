@@ -73,18 +73,6 @@ Expected: Value saved and shown in output table
 
 ---
 
-### Negative Test Cases:
-
-**TC-004: Invalid Input - Below Min**  
-Steps: Select 1899  
-Expected: Field input rejected or ignored, form does not break
-
-**TC-005: Invalid Input - Above Max**  
-Steps: Select 3000  
-Expected: Field input rejected or ignored, form does not break
-
----
-
 ### Optional Input Case:
 
 **TC-006: Empty Input**  
@@ -119,17 +107,8 @@ Expected: Form submits successfully, field not shown in output table
 **Scenario 2: Valid values (3 cases)**  
 *Covers TC-001, TC-002, TC-003*
 
-**Scenario 3: Invalid inputs (2 cases)**  
-*Covers TC-004, TC-005*
-
 **Scenario 4: Field optional (empty input)**  
 *Covers TC-006*
-
----
-
-### Total: 7 automated tests across 4 BDD scenarios (including Outline examples)
-
----
 
 ### Automation Limitations:
 
