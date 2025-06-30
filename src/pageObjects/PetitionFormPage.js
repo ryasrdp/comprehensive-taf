@@ -26,10 +26,8 @@ export default class PetitionFormPage extends BasePage {
     this.userStateProvinceField = page.locator('//input[@id="state"]');
     this.dateOfBirdth = page.getByRole('textbox', { name: 'Date of Birth *' });
 
-    // Добавляем локаторы для поля Previous Employer City
     this.previousEmployerCityField = page.locator('#prevEmployerAddress');
 
-    // Локатор для сообщения об ошибке валидации
     this.fieldValidationError = fieldName =>
       page.locator(`//label[contains(text(),"${fieldName}")]/following-sibling::p[contains(@class,"error")]`);
   }
