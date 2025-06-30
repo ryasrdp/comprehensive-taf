@@ -8,12 +8,6 @@ export class BasePage {
     this.formField = fieldName => page.locator(`//label[.="${fieldName}"]/following-sibling::input`);
     this.fieldLocatorByName = fieldName =>
       page.locator(`//label[contains(text(), "${fieldName}")]/following-sibling::input`);
-    // Changed the locator below because the previous one was unreliable for long field labels.
-    // Previously, the locator tried to find the label by exact match.
-    // The issue is that long labels are often split into multiple lines in the DOM,
-    // making it impossible for the locator to find an exact match.
-    // Now, the locator uses `contains(normalize-space(.), ...)` to match any part of the label text,
-    // which is more robust for multiline or partially matching labels.
     this.fieldBySectionLocatorByName = (fieldName, sectionName) =>
       page.locator(
         `//*[@class="section-title" and contains(normalize-space(.), "${sectionName}")]` +
