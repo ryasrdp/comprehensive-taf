@@ -38,3 +38,17 @@ Feature: EHU-ATJS-20283. Add "College Location" field to the Petition for Space 
       | A                          |
       | Zurich, CH (ETH)          |
       | 123 Moon Base 7           |
+
+@skip
+  Scenario Outline: College Location field shows error for invalid input
+    Then Check field "College Location (City, State/Country)" is present on "Education Information" section
+    And Select "<invalid>" value in "College Location (City, State/Country)" field on "Education Information" section
+    And Click on "Submit" button
+    Then Verify tooltip "Field must contain valid characters" is displayed for "College Location (City, State/Country)" field
+
+    Examples:
+      | invalid     |
+      | @@@@        |
+      | 🚀🔥        |
+      | Литва      |
+      | <>*%$#      |

@@ -71,6 +71,19 @@ Adding a **College Location** field will allow users to provide this information
 
 ---
 
+## ⚠ Known Limitation
+
+Negative validation tests for the `College Location (City, State/Country)` field are **skipped**.
+
+- The input does **not implement HTML validation attributes** such as `pattern`, `title`, or `required`
+- As a result, `input.checkValidity()` returns `true` even with invalid characters like emojis or symbols
+- Tooltip validation does not appear in DOM
+
+ Once the frontend adds proper HTML validation, the `@skip` tag can be removed, and these tests will be activated.
+
+
+---
+
 ## Expected Results:
 
 - College Location field visible and editable  
