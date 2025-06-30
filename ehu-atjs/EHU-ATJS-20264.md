@@ -90,6 +90,35 @@ Currently, the Petition for Space Travel form does not include a field for speci
 
 ---
 
+## BDD Scenarios Implemented:
+
+### Scenario 1: Field Visibility Testing
+- Verifies Current Employer field is present in Employment Information section
+- Covers TC-001
+
+### Scenario 2: Positive Testing with Valid Values (3 test cases)
+- Tests valid input values (SpaceX, Company 42, Stark-Industries Ltd)
+- Confirms data appears correctly in output table
+- Covers TC-002, TC-005
+
+### Scenario 3: Non-Mandatory Field Testing
+- Verifies form submits successfully without Current Employer field
+- Confirms field is optional as per requirements
+- Covers TC-006
+
+### Scenario 4: Edge Case Testing (3 test cases)
+- Tests boundary values (single character, numbers, allowed symbols)
+- Verifies edge cases are handled correctly
+- Covers TC-003, TC-004
+
+### Scenario 5: Empty Value Testing
+- Tests that empty value is accepted (non-mandatory field)
+- Additional coverage for TC-006
+
+**Total: 9 automated test cases covering positive, edge case, and boundary testing scenarios.**
+
+---
+
 ## Automation Limitations:
 
 Validation testing for invalid characters (TC-007, TC-008) could be challenging due to current step definition constraints. The framework may use a generic field locator that cannot always differentiate between different fields across various form sections, which could result in element ambiguity errors.
