@@ -14,7 +14,7 @@ Feature: EHU-ATJS-20282. Add "College University Name" Field to the Petition for
     And Click on "Submit" button
     Then Check Field "First Name" contain value "USER" "2" "First Name" on submitted Petition form
     And Check Field "Last Name" contain value "USER" "2" "Last Name" on submitted Petition form
-    And Check Field "College University Name" on "Education Information" section contain value "Stellar Academy of Science" on submitted Petition form
+    And Check Field "College University Name" on "6. Education Information" section contain value "Stellar Academy of Science" on submitted Petition form
 
 
 
