@@ -25,6 +25,13 @@ export default class PetitionFormPage extends BasePage {
     this.userCityField = page.locator('//input[@id="city"]');
     this.userStateProvinceField = page.locator('//input[@id="state"]');
     this.dateOfBirdth = page.getByRole('textbox', { name: 'Date of Birth *' });
+
+    // Добавляем локаторы для поля Previous Employer City
+    this.previousEmployerCityField = page.locator('#prevEmployerAddress');
+
+    // Локатор для сообщения об ошибке валидации
+    this.fieldValidationError = fieldName =>
+      page.locator(`//label[contains(text(),"${fieldName}")]/following-sibling::p[contains(@class,"error")]`);
   }
 
   async fillPetitionMandatoryFormFields(userName, userNumber) {
@@ -44,6 +51,27 @@ export default class PetitionFormPage extends BasePage {
     await this.dateOfBirdth.fill(user.userDob);
     await this.backgroundCheckConsentCheckBox.click();
     await this.termsAgreementCheckBox.click();
+  }
+
+  async fillPreviousEmployerCity(value) {
+    await this.previousEmployerCityField.fill(value);
+    await this.previousEmployerCityField.blur();
+  }
+
+  async getValidationErrorMessage(fieldName) {
+    const errorLocator = this.fieldValidationError(fieldName);
+    await errorLocator.waitFor({ state: 'visible', timeout: 5000 });
+    return await errorLocator.textContent();
+  }
+
+  async isValidationErrorVisible(fieldName) {
+    const errorLocator = this.fieldValidationError(fieldName);
+    try {
+      await errorLocator.waitFor({ state: 'visible', timeout: 2000 });
+      return true;
+    } catch {
+      return false;
+    }
   }
 
   async checkVisibilityOfSection(sectionName, formName) {

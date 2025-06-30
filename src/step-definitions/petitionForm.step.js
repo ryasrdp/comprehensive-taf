@@ -24,7 +24,14 @@ Then(
   /^Check field "([^"]*)" is (present|absent) on "([^"]*)" section$/,
   async ({ page }, fieldName, isPresent, sectionName) => {
     const petitionFormPage = new PetitionFormPage(page);
+
+    if (isPresent === 'absent') {
+      const checkbox = page.getByLabel('I have worked at my current employer for 2+ years');
+      await expect(checkbox).toBeVisible();
+      await checkbox.check();
+    }
     const fieldVisible = await petitionFormPage.checkVisibilityOfField(sectionName, fieldName);
+
     if (isPresent === 'present') {
       expect(fieldVisible).toBeTruthy();
     } else if (isPresent === 'absent') {
@@ -32,6 +39,7 @@ Then(
     }
   },
 );
+
 
 Then(
   'Check Field {string} contain value {string} {string} {string} on submitted Petition form',
@@ -66,3 +74,37 @@ When('Fill Mandatory Petition Form for {string} {string}', async ({ page }, stud
   const petitionFormPage = new PetitionFormPage(page);
   await petitionFormPage.fillPetitionMandatoryFormFields(student, number);
 });
+
+Then('Uncheck checkbox {string} on {string} section', async ({ page }) => {
+  const checkbox = page.locator('input#noPreviousEmployment');
+
+  await expect(checkbox).toBeVisible();
+
+  if (await checkbox.isChecked()) {
+    await checkbox.uncheck();
+  }
+});
+
+When(
+  /^Fill "([^"]*)" field with "([^"]*)" on "([^"]*)" section$/,
+  async ({ page }, fieldName, value, sectionName) => {
+    const petitionFormPage = new PetitionFormPage(page);
+    const fieldLocator = petitionFormPage.fieldOnSectionLocator(sectionName, fieldName);
+    const input = fieldLocator.locator('..//input | ..//textarea');
+    await input.fill(value);
+  },
+);
+
+
+Then(
+  /^Check validation error "([^"]*)" is displayed for "([^"]*)" field$/,
+  async ({ page }, errorMessage, fieldName) => {
+    const petitionFormPage = new PetitionFormPage(page);
+
+    const isErrorVisible = await petitionFormPage.isValidationErrorVisible(fieldName);
+    expect(isErrorVisible).toBeTruthy();
+
+    const actualErrorMessage = await petitionFormPage.getValidationErrorMessage(fieldName);
+    expect(actualErrorMessage).toBe(errorMessage);
+  },
+);
