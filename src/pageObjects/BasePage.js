@@ -6,6 +6,8 @@ export class BasePage {
     this.alertButtom = page.locator('button#trigger-alert');
     this.dateFieldLocatorByName = fieldName => page.getByRole('textbox', { name: `${fieldName}` });
     this.formField = fieldName => page.locator(`//label[.="${fieldName}"]/following-sibling::input`);
+    this.formSectionFieldInput = (sectionName, fieldName) =>
+      (`//*[.="${sectionName}"]/..//label[.="${fieldName}"]/following-sibling::input`);
     this.fieldLocatorByName = fieldName =>
       page.locator(`//label[contains(text(), "${fieldName}")]/following-sibling::input`);
     this.fieldBySectionLocatorByName = (fieldName, sectionName) =>
