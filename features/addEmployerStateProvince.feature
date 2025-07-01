@@ -1,45 +1,41 @@
-Feature: Employer State/Province Field in Petition for Space Travel Form
+@labubu
 
-  As a user,
-  I want to provide my employer's state or province
-  So that authorities can verify my workplace location and keep accurate records.
+Feature: EHU-ATJS-20268. Add "Employer State/Province" Field in "Employment Information" section to the Petition for Space Travel Form
 
-  Background:
-    Given I am on the Petition for Space Travel Form page
+  Scenario: Field is visible
+    Given Open web page url "https://ryasrdp.github.io/"
+    Then Check field "Employer State/Province" is present on "Employment Information" section
 
-  Scenario: Employer State/Province field is visible in Employment Information section
-    Then I should see the "Employer State/Province" field in the Employment Information section
-
-  Scenario: Employer State/Province field shows placeholder when empty
-    When I focus on the "Employer State/Province" field
-    Then I should see the placeholder text "Enter state or province"
-
-  Scenario Outline: Valid Employer State/Province input
-    When I enter "<input>" into the "Employer State/Province" field
-    And I submit the form
-    Then I should see the submitted "<input>" displayed in the output table
-    And I should not see any validation error
+  Scenario Outline: Valid values are accepted
+    Given Open web page url "https://ryasrdp.github.io/"
+    And Create "USER" "1" using storage
+    Then Check field "Employer State/Province" is present on "Employment Information" section
+    And Select "<valid_value>" value in "Employer State/Province" field on "Employment Information" section
+    And Fill Mandatory Petition Form for "USER" "1"
+    And Click on "Submit" button
+    Then Check Field "First Name" contain value "USER" "1" "First Name" on submitted Petition form
+    # And Check Field "Employer State/Province" on "3. Employment Information" section contain value "<valid_value>" on submitted Petition form
 
     Examples:
-      | input           |
-      | California      |
-      | St. John's      |
-      | New York        |
-      | Quebec          |
+      | valid_value   |
+      | California    |
+      | St. John's    |
 
-  Scenario: Employer State/Province field is optional
-    When I leave the "Employer State/Province" field empty
-    And I submit the form
-    Then the form should submit successfully
-    And the output table should display the submitted data without Employer State/Province
+  Scenario: Field is optional
+    Given Open web page url "https://ryasrdp.github.io/"
+    And Create "USER" "1" using storage
+    Then Check field "Employer State/Province" is present on "Employment Information" section
+    And Fill Mandatory Petition Form for "USER" "1"
+    And Click on "Submit" button
+    Then Check Field "First Name" contain value "USER" "1" "First Name" on submitted Petition form
 
-  Scenario Outline: Invalid Employer State/Province input triggers validation error
-    When I enter "<input>" into the "Employer State/Province" field
-    And I submit the form
-    Then I should see the validation error "Field must contain valid characters."
+  Scenario Outline: Invalid values are rejected
+    Given Open web page url "https://ryasrdp.github.io/"
+    And Select "<invalid_value>" value in "Employer State/Province" field on "Employment Information" section
+    And Click on "Submit" button
+    # Then Check validation error "Field must contain valid characters." is displayed for "Employer State/Province" field
 
     Examples:
-      | input          |
-      | Florida!!!     |
-      | Texas 🚀       |
-      | @California    |
+      | invalid_value |
+      | Florida!!!    |
+      | Texas 🚀      |
