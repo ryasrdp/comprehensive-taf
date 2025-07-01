@@ -12,7 +12,7 @@ Feature: EHU-ATJS-20276. Add "Previous Employer City" Field to the Petition for 
     And Check field "Previous Employer City" is present on "Employment Information" section
     And Uncheck checkbox "I have worked at my current employer for 2+ years" on "Employment Information" section
     Then Check field "Previous Employer City" is present on "Employment Information" section
-    And Fill "Previous Employer City" field with "Boston" on "Employment Information" section
+    And Select "Boston" value in "Previous Employer City" field on "Employment Information" section
     And Fill Mandatory Petition Form for "USER" "1"
     And Click on "Submit" button
     Then Check Field "First Name" contain value "USER" "1" "First Name" on submitted Petition form
@@ -26,7 +26,7 @@ Feature: EHU-ATJS-20276. Add "Previous Employer City" Field to the Petition for 
     Then Check section "Employment Information" is present on "Petition to leave planet Earth" form
     And Uncheck checkbox "I have worked at my current employer for 2+ years" on "Employment Information" section
     And Fill "Previous Employer City" field with "City123!@#" on "Employment Information" section
-    Then Check validation error "Field must contain valid characters." is displayed for "Previous Employer City" field
+    Then Verify tooltip "Field must contain valid characters." is displayed for "Previous Employer City" field
 
   Scenario: Submit form without Previous Employer City field (optional field behavior)
     Given Open web page url "https://ryasrdp.github.io/"
