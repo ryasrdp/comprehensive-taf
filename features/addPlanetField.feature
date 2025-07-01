@@ -21,7 +21,7 @@ Feature: EHU-ATJS-20258 - Add "Planet" Field to the Petition for Space Travel Fo
     And Fill Mandatory Petition Form for "USER" "X1"
     And Click on "Submit" button
     Then Check Field "First Name" contain value "USER" "X1" "First Name" on submitted Petition form
-    And Check Field "Planet" on "Planned Travel Information" section contain value "<planet_value>" on submitted Petition form
+    And Check Field "Planet" on "10. Planned Travel Information" section contain value "<planet_value>" on submitted Petition form
 
     Examples:
       | planet_value   |
@@ -37,7 +37,7 @@ Feature: EHU-ATJS-20258 - Add "Planet" Field to the Petition for Space Travel Fo
     And Fill Mandatory Petition Form for "USER" "X1"
     And Click on "Submit" button
     Then Check Field "First Name" contain value "USER" "X1" "First Name" on submitted Petition form
-    And Check Field "Planet" on "Planned Travel Information" section contain value "<edge_value>" on submitted Petition form
+    And Check Field "Planet" on "10. Planned Travel Information" section contain value "<edge_value>" on submitted Petition form
 
     Examples:
       | edge_value     |
@@ -53,4 +53,21 @@ Feature: EHU-ATJS-20258 - Add "Planet" Field to the Petition for Space Travel Fo
     And Fill Mandatory Petition Form for "USER" "X1"
     And Click on "Submit" button
     Then Check Field "First Name" contain value "USER" "X1" "First Name" on submitted Petition form
-    And Check Field "Planet" on "Planned Travel Information" section contain value "" on submitted Petition form
+    And Check Field "Planet" on "10. Planned Travel Information" section contain value "" on submitted Petition form
+
+  @skip
+  # Temporarily skipped due to known bug: validation for the Planet field is not working
+
+  Scenario Outline: Submit invalid Planet field value and verify tooltip
+    Given Open web page url "https://ryasrdp.github.io/"
+    And Create "USER" "X1" using storage
+    Then Check field "Planet" is present on "Planned Travel Information" section
+    And Select "<invalid_value>" value in "Planet" field on "Planned Travel Information" section
+    And Fill Mandatory Petition Form for "USER" "X1"
+    And Click on "Submit" button
+    Then Verify tooltip "Field must contain Latin letters only." is displayed for "Planet" field on "Planned Travel Information" section
+
+    Examples:
+      | invalid_value |
+      | 火星           |
+      | Planet 🌟     |

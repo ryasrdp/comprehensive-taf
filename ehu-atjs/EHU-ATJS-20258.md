@@ -76,15 +76,14 @@ Currently, the Petition for Space Travel form does not include a field for speci
 
 ### BDD Scenarios Implemented
 
-| Scenario Title                    | Description                                                                                  | Test Cases Covered            |
-|--------------------------|----------------------------------------------------------------------------------------------|------------------------------|
-| Field Visibility Testing | Verify the **Planet** field is present with placeholder in both Travel Information sections. | TC-001                       |
-| Positive Input Testing    | Submit valid planet names (normal cases) and verify acceptance and display on output.        | TC-002, TC-005               |
-| Edge Input Testing       | Submit special planet names with numbers, symbols, single characters, verify acceptance/display.  | TC-003, TC-004               |
-| Empty Value Testing      | Submit form with the **Planet** field empty and verify successful submission.                 | TC-006                       |
+| Scenario Title            | Description                                                                                      | Test Cases Covered |
+| ------------------------- | ------------------------------------------------------------------------------------------------ | ------------------ |
+| Field Visibility Testing  | Verify the **Planet** field is present with placeholder in both Travel Information sections.     | TC-001             |
+| Positive Input Testing    | Submit valid planet names (normal cases) and verify acceptance and display on output.            | TC-002, TC-005     |
+| Edge Input Testing        | Submit special planet names with numbers, symbols, single characters, verify acceptance/display. | TC-003, TC-004     |
+| Empty Value Testing       | Submit form with the **Planet** field empty and verify successful submission.                    | TC-006             |
+| Negative Input Validation | Submit invalid planet names with non-Latin characters or emojis and verify validation errors.    | TC-007, TC-008     |
 
 ## Automation Limitations
 
-Validation testing for invalid characters **(TC-007, TC-008)** could not be automated due to current step definition constraints. The test framework’s tooltip validation step uses generic locators which cannot uniquely identify validation errors for the **Planet** field in different dynamic sections (Address Information, Planned Travel Information, Previous Travel Information). This causes ambiguity errors when multiple fields with the same name exist, preventing automated verification of error messages for non-Latin characters or emojis.
-
-Due to these limitations, negative validation tests for invalid characters should be verified manually to ensure the correct error message ("Field must contain Latin letters only.") is displayed and the input is rejected.
+There are no automation limitations for the Planet field
