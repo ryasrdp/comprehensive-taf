@@ -82,4 +82,20 @@ export default class PetitionFormPage extends BasePage {
       await input.first().fill(value);
     }
   }
+
+  async getTooltipText(sectionName, fieldName) {
+    const fieldLabel = this.fieldOnSectionLocator(sectionName, fieldName);
+    const tooltip = fieldLabel.locator('..').locator('[class*="error-message"]');
+    await tooltip.waitFor({ state: 'visible' });
+    return tooltip.textContent();
+  }
+
+  async selectValueInSectionField(fieldName, sectionName, value) {
+    const fieldLabel = this.fieldOnSectionLocator(sectionName, fieldName);
+    const select = fieldLabel.locator('..').locator('select');
+    if (await select.count() === 0) {
+      throw new Error(`Select dropdown not found for "${fieldName}" in "${sectionName}"`);
+    }
+    await select.first().selectOption({ label: value });
+  }
 }

@@ -1,5 +1,4 @@
 @form
-
 Feature: EHU-ATJS-20265. Add "Work Phone" Field in "Employment Information" section to the Petition for Space Travel Form
 
   As a user,
@@ -37,10 +36,10 @@ Feature: EHU-ATJS-20265. Add "Work Phone" Field in "Employment Information" sect
     And Fill "<invalid_phone>" in "Work Phone" field on "Employment Information" section
     And Fill Mandatory Petition Form for "USER" "1"
     And Click on "Submit" button
-    Then Check Error Message "Please enter a valid phone number in E.164 format." is displayed for "Work Phone" field
+    Then Verify tooltip "Please enter a valid phone number in E.164 format." is displayed for "Work Phone" field on "Employment Information" section
 
     Examples:
-      | invalid_phone |
-      | abc123        |
-      | 123-456-7890  |
-      | ++11234567890 |
+      | invalid_phone  |
+      | abc123         |
+      | 123-456-7890   |
+      | ++11234567890  |

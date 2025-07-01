@@ -76,12 +76,10 @@ When(
 );
 
 Then(
-  'Check Error Message {string} is displayed for {string} field',
-  async ({ page }, errorMessage, fieldName) => {
-    const errorLocator = page
-    .locator(`//label[normalize-space()="${fieldName}"]/following-sibling::*[contains(@class, "error-message")]`);
-    await errorLocator.waitFor({ state: 'visible' });
-    const actualText = await errorLocator.textContent();
-    expect(actualText.trim()).toBe(errorMessage);
+  'Verify tooltip {string} is displayed for {string} field on {string} section',
+  async ({ page }, expectedText, fieldName, sectionName) => {
+    const petitionFormPage = new PetitionFormPage(page);
+    const tooltipText = await petitionFormPage.getTooltipText(sectionName, fieldName);
+    expect(tooltipText.trim()).toBe(expectedText);
   },
 );
