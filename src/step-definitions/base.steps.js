@@ -16,9 +16,16 @@ When('Click on {string} button', async ({ page }, buttonName) => {
   await basePage.clickOnButton(buttonName);
 });
 
-Then('Verify tooltip {string} is displayed for {string} field', async ({ page }, tooltipMessage, fieldName) => {
+Then(/^Verify tooltip "([^"]*)" is displayed for "([^"]*)" field( on "([^"]*)" section)?$/, async ({ page }, tooltipMessage, fieldName, sectionName) => {
   const basePage = new BasePage(page);
-  const requiredField = await basePage.formField(fieldName);
+  const formField = await basePage.formField(fieldName);
+  const formSectionField = await basePage.formSectionFieldInput(sectionName, fieldName);
+  let requiredField;
+  if (sectionName) {
+    requiredField = formSectionField;
+  } else {
+    requiredField = formField;
+  }
   await requiredField.waitFor({ state: 'visible' });
   await requiredField.focus();
   const isFieldInvalid = await requiredField.evaluate(field => field.checkValidity() === false);
