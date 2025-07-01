@@ -67,4 +67,19 @@ export default class PetitionFormPage extends BasePage {
       return false;
     }
   }
+
+  async fillFieldInSection(fieldName, sectionName, value) {
+    const fieldLabel = this.fieldOnSectionLocator(sectionName, fieldName);
+    const input = fieldLabel.locator('..').locator('input, textarea, select');
+    if (await input.count() === 0) {
+      throw new Error(`Input field not found for "${fieldName}" in "${sectionName}"`);
+    }
+    // eslint-disable-next-line arrow-parens
+    const tagName = await input.first().evaluate((el) => el.tagName.toLowerCase());
+    if (tagName === 'select') {
+      await input.first().selectOption({ label: value });
+    } else {
+      await input.first().fill(value);
+    }
+  }
 }

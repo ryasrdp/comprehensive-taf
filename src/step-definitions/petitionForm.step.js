@@ -66,3 +66,22 @@ When('Fill Mandatory Petition Form for {string} {string}', async ({ page }, stud
   const petitionFormPage = new PetitionFormPage(page);
   await petitionFormPage.fillPetitionMandatoryFormFields(student, number);
 });
+
+When(
+  'Fill {string} in {string} field on {string} section',
+  async ({ page }, value, fieldName, sectionName) => {
+    const petitionFormPage = new PetitionFormPage(page);
+    await petitionFormPage.fillFieldInSection(fieldName, sectionName, value);
+  },
+);
+
+Then(
+  'Check Error Message {string} is displayed for {string} field',
+  async ({ page }, errorMessage, fieldName) => {
+    const errorLocator = page
+    .locator(`//label[normalize-space()="${fieldName}"]/following-sibling::*[contains(@class, "error-message")]`);
+    await errorLocator.waitFor({ state: 'visible' });
+    const actualText = await errorLocator.textContent();
+    expect(actualText.trim()).toBe(errorMessage);
+  },
+);
