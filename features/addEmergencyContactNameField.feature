@@ -13,8 +13,6 @@ Feature: EHU-ATJS-20252. Add "Emergency Contact Name" Field to the Petition for 
 
   Scenario Outline: Fill Emergency Contact Name with valid values and verify output. With value <valid_name>
     Given Open web page url "https://ryasrdp.github.io/"
-    And Create "USER" "1" using storage
-    Then Check field "Emergency Contact Name" is present on "Contact Information" section
     And Select "<valid_name>" value in "Emergency Contact Name" field on "Contact Information" section
     And Fill Mandatory Petition Form for "USER" "1"
     And Click on "Submit" button
@@ -31,8 +29,6 @@ Feature: EHU-ATJS-20252. Add "Emergency Contact Name" Field to the Petition for 
 
   Scenario: Submit form without Emergency Contact Name
     Given Open web page url "https://ryasrdp.github.io/"
-    And Create "USER" "1" using storage
-    Then Check field "Emergency Contact Name" is present on "Contact Information" section
     And Fill Mandatory Petition Form for "USER" "1"
     And Click on "Submit" button
     Then Check Field "First Name" contain value "USER" "1" "First Name" on submitted Petition form
@@ -41,8 +37,6 @@ Feature: EHU-ATJS-20252. Add "Emergency Contact Name" Field to the Petition for 
 @skip
   Scenario Outline: Validate Emergency Contact Name with invalid characters. With value <invalid_name>
     Given Open web page url "https://ryasrdp.github.io/"
-    And Create "USER" "1" using storage
-    Then Check field "Emergency Contact Name" is present on "Contact Information" section
     And Select "<invalid_name>" value in "Emergency Contact Name" field on "Contact Information" section
     Then Verify tooltip "Field must contain Latin letters only." is displayed for "Emergency Contact Name" field
 
@@ -58,6 +52,4 @@ Feature: EHU-ATJS-20252. Add "Emergency Contact Name" Field to the Petition for 
   @skip
   Scenario: Check Emergency Contact Name placeholder in Contact Information section
     Given Open web page url "https://ryasrdp.github.io/"
-    And Create "USER" "1" using storage
-    Then Check field "Emergency Contact Name" is present on "Contact Information" section
     And Check placeholder "Enter emergency contact name" is displayed for "Emergency Contact Name" field on "Contact Information" section
