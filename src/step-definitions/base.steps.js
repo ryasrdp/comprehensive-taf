@@ -16,7 +16,8 @@ When('Click on {string} button', async ({ page }, buttonName) => {
   await basePage.clickOnButton(buttonName);
 });
 
-Then(/^Verify tooltip "([^"]*)" is displayed for "([^"]*)" field( on "([^"]*)" section)?$/, async ({ page }, tooltipMessage, fieldName, sectionName) => {
+Then(/^Verify tooltip "([^"]*)" is displayed for "([^"]*)" field( on "([^"]*)" section)?$/,
+  async ({ page }, tooltipMessage, fieldName, sectionName) => {
   const basePage = new BasePage(page);
   const formField = await basePage.formField(fieldName);
   const formSectionField = await basePage.formSectionFieldInput(sectionName, fieldName);
