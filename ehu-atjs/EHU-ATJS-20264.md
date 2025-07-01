@@ -115,6 +115,12 @@ Currently, the Petition for Space Travel form does not include a field for speci
 - Tests that empty value is accepted (non-mandatory field)
 - Additional coverage for TC-006
 
+### Scenario 6: Negative Testing - Invalid Characters
+- Tests validation for invalid characters (special symbols, non-ASCII)
+- Verifies error message appears when invalid input is provided
+- Covers TC-007, TC-008
+- Note: This scenario is documented but not automated due to framework limitations
+
 **Total: 9 automated test cases covering positive, edge case, and boundary testing scenarios.**
 
 ---
