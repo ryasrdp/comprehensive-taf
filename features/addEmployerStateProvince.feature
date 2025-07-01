@@ -1,5 +1,3 @@
-@SomeTagOrScenarioName
-
 Feature: Employer State/Province Field in Petition for Space Travel Form
 
   As a user,
