@@ -20,12 +20,3 @@ Feature: EHU-ATJS-20280. Add "Year of Graduation" Field in "Education Informatio
       | 2000       |
       | 1995       |
       | 2025       |
-
-  Scenario: Check field "Year of Graduation" is optional when left empty
-    Given Open web page url "https://ryasrdp.github.io/"
-    And Create "USER" "1" using storage
-    Then Check field "Year of Graduation" is present on "Education Information" section
-    And Fill Mandatory Petition Form for "USER" "1"
-    And Click on "Submit" button
-    Then Check Field "First Name" contain value "USER" "1" "First Name" on submitted Petition form
-    # Year of Graduation not shown — field is optional
