@@ -19,3 +19,28 @@ Currently, the Petition for Space Travel form does not include a field to captur
 7. After clicking the **Submit** button, the output table must display the submitted data, including the **Where, when and under what circumstances did he end up on planet Earth?** field, if provided.
 
 ---
+
+## 1 Story point
+
+---
+
+## Test case: Validation and Functionality of the "Where, when and under what circumstances did he end up on planet Earth?" Field
+
+**Preconditions:**
+- User has access to the "Create Form" and "View section" modes.
+- The form contains the field "Where, when and under what circumstances did he end up on planet Earth?" in the "Race Information" section.
+
+**Test Steps:**
+1. Navigate to the Petition for Space Travel Form and ensure the field is visible and empty by default.
+2. Enter up to 200 words, verify the field accepts the input and can be submitted.
+3. Enter more than 200 words and submit; verify the error "Field must not exceed 200 words." is shown.
+4. Leave the field empty and submit; verify the form is submitted successfully.
+
+**Expected Result:**
+- The field is visible and empty by default.
+- The field accepts up to 200 words.
+- More than 200 words triggers an error message.
+- The form can be submitted with the field empty.
+- The output table displays the entered value if provided.
+
+---
