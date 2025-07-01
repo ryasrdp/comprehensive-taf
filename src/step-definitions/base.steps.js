@@ -21,7 +21,7 @@ Then(/^Verify tooltip "([^"]*)" is displayed for "([^"]*)" field( on "([^"]*)" s
   const basePage = new BasePage(page);
   const formField = await basePage.formField(fieldName);
   const formSectionField = await basePage.formSectionFieldInput(sectionName, fieldName);
-  let requiredField;
+  let requiredField = '';
   if (sectionName) {
     requiredField = formSectionField;
   } else {
