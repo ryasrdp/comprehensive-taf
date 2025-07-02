@@ -53,18 +53,7 @@ Currently, the Petition for Space Travel form captures the current city but does
 
 ##### Expected Result: The final data table is displayed, and the "Previous City" column correctly shows the value "Tokyo".
 
-### Scenario 3: Optional Field Verification
-
-#### Steps:
-
-1. Navigate to the "Petition for Space Travel" form. 
-2. Leave the "Previous City" field empty. 
-3. Fill in all other mandatory fields on the form. 
-4. Click the "Submit" button.
-
-##### Expected Result: The form submits successfully. The "Previous City" column in the final data table is empty.
-
-### Scenario 4: Negative Path (Invalid Data Validation)
+### Scenario 3: Negative Path (Invalid Data Validation)
 
 #### Steps:
 
