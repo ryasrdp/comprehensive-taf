@@ -100,4 +100,22 @@ export default class PetitionFormPage extends BasePage {
       return false;
     }
   }
+
+  async getValidationErrorForField(fieldLabel) {
+  const fieldLabelLocator = this.page.locator(`//label[contains(text(),"${fieldLabel}")]`);
+  const fieldId = await fieldLabelLocator.getAttribute('for');
+
+  if (!fieldId) {
+    return null;
+  }
+
+  const errorLocator = this.page.locator(`#${fieldId} ~ .error, #${fieldId} ~ .invalid-feedback`);
+  const isVisible = await errorLocator.isVisible();
+
+  if (!isVisible) {
+return null;
+}
+
+  return await errorLocator.textContent();
+}
 }
