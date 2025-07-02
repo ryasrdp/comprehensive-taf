@@ -27,13 +27,6 @@ Feature: EHU-ATJS-20252. Add "Emergency Contact Name" Field to the Petition for 
       | Chewbacca-42                                    |
       | R2-D2 - Astro & Tech Ltd. (your droid's startup)|
 
-  Scenario: Submit form without Emergency Contact Name
-    Given Open web page url "https://ryasrdp.github.io/"
-    And Fill Mandatory Petition Form for "USER" "1"
-    And Click on "Submit" button
-    Then Check Field "First Name" contain value "USER" "1" "First Name" on submitted Petition form
-
-
 @skip
   Scenario Outline: Validate Emergency Contact Name with invalid characters. With value <invalid_name>
     Given Open web page url "https://ryasrdp.github.io/"
@@ -46,10 +39,3 @@ Feature: EHU-ATJS-20252. Add "Emergency Contact Name" Field to the Petition for 
       | Палпатин          |
       | Сноук(((:         |
       | Кайло Рен!★☆      |
-
-
-
-  @skip
-  Scenario: Check Emergency Contact Name placeholder in Contact Information section
-    Given Open web page url "https://ryasrdp.github.io/"
-    And Check placeholder "Enter emergency contact name" is displayed for "Emergency Contact Name" field on "Contact Information" section

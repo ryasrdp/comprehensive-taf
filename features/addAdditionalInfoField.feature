@@ -4,7 +4,7 @@ Feature: EHU-ATJS-20256. Add "* What else would you like to tell us about yourse
   I want to provide additional information about myself in the Petition for Space Travel form
   So that authorities can gain deeper insights into my background
 
-  Scenario Outline: Check custom info field accepts valid values
+  Scenario Outline: Check custom info field accepts valid <input_text> values
     Given Open web page url "https://ryasrdp.github.io/"
     And Create "USER" "1" using storage
     Then Check field "* What else would you like to tell us about yourself??" is present on "Race Information" section

@@ -19,13 +19,13 @@ Feature: EHU-ATJS-20276. Add "Previous Employer City" Field to the Petition for 
     And Check Field "Last Name" contain value "USER" "1" "Last Name" on submitted Petition form
     And Check Field "Previous Employer City" on "5. Employment Information" section contain value "Boston" on submitted Petition form
 
-  @skip 
+  @skip
   Scenario: Check Previous Employer City field validation on Petition to leave planet Earth
     Given Open web page url "https://ryasrdp.github.io/"
     And Create "USER" "1" using storage
     Then Check section "Employment Information" is present on "Petition to leave planet Earth" form
     And Uncheck checkbox "I have worked at my current employer for 2+ years" on "Employment Information" section
-    And Fill "Previous Employer City" field with "City123!@#" on "Employment Information" section
+    And Select "City123!@#" value in "Previous Employer City" field on "Employment Information" section
     Then Verify tooltip "Field must contain valid characters." is displayed for "Previous Employer City" field
 
   Scenario: Submit form without Previous Employer City field (optional field behavior)
