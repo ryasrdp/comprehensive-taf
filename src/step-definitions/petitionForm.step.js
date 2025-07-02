@@ -66,20 +66,3 @@ When('Fill Mandatory Petition Form for {string} {string}', async ({ page }, stud
   const petitionFormPage = new PetitionFormPage(page);
   await petitionFormPage.fillPetitionMandatoryFormFields(student, number);
 });
-
-When(
-  'Fill {string} in {string} field on {string} section',
-  async ({ page }, value, fieldName, sectionName) => {
-    const petitionFormPage = new PetitionFormPage(page);
-    await petitionFormPage.fillFieldInSection(fieldName, sectionName, value);
-  },
-);
-
-Then(
-  'Verify tooltip {string} is displayed for {string} field on {string} section',
-  async ({ page }, expectedText, fieldName, sectionName) => {
-    const petitionFormPage = new PetitionFormPage(page);
-    const tooltipText = await petitionFormPage.getTooltipText(sectionName, fieldName);
-    expect(tooltipText.trim()).toBe(expectedText);
-  },
-);
