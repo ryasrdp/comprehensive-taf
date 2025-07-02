@@ -5,15 +5,10 @@ Feature: EHU-ATJS-20264. Add "Current Employer" Field to the Petition for Space 
   I want to provide the name of my current employer in the Petition for Space Travel form
   So that authorities can understand my professional affiliations and verify my employment details.
 
-  Scenario: Check Current Employer field visibility
-    Given Open web page url "https://ryasrdp.github.io/"
-    And Create "USER" "1" using storage
-    Then Check section "Employment Information" is present on "Petition to leave planet Earth" form
-    Then Check field "Current Employer" is present on "Employment Information" section
-
   Scenario Outline: Check Current Employer field with valid values
     Given Open web page url "https://ryasrdp.github.io/"
     And Create "USER" "1" using storage
+    Then Check section "Employment Information" is present on "Petition to leave planet Earth" form
     Then Check field "Current Employer" is present on "Employment Information" section
     And Select "<employer_value>" value in "Current Employer" field on "Employment Information" section
     And Fill Mandatory Petition Form for "USER" "1"
