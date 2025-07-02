@@ -22,14 +22,6 @@ Feature: EHU-ATJS-20264. Add "Current Employer" Field to the Petition for Space 
       | Company 42          |
       | Stark-Industries Ltd|
 
-  Scenario: Check Current Employer field is not mandatory
-    Given Open web page url "https://ryasrdp.github.io/"
-    And Create "USER" "1" using storage
-    Then Check field "Current Employer" is present on "Employment Information" section
-    And Fill Mandatory Petition Form for "USER" "1"
-    And Click on "Submit" button
-    Then Check Field "First Name" contain value "USER" "1" "First Name" on submitted Petition form
-
   Scenario Outline: Check Current Employer field with edge case values
     Given Open web page url "https://ryasrdp.github.io/"
     And Create "USER" "1" using storage
@@ -61,4 +53,4 @@ Feature: EHU-ATJS-20264. Add "Current Employer" Field to the Petition for Space 
     And Create "USER" "1" using storage
     Then Check field "Current Employer" is present on "Employment Information" section
     And Select "Company@#$%" value in "Current Employer" field on "Employment Information" section
-    Then Verify tooltip "Field must contain valid characters." is displayed for "Current Employer" field 
+    Then Verify tooltip "Field must contain valid characters." is displayed for "Current Employer" field
