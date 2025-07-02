@@ -62,17 +62,6 @@ Then(
   },
 );
 
-Then(
-  'Check validation error {string} is shown for field {string}',
-  async ({ page }, errorMessage, fieldLabel) => {
-    const petitionFormPage = new PetitionFormPage(page);
-    const actualErrorMessage = await petitionFormPage.getValidationErrorForField(fieldLabel);
-
-    expect(actualErrorMessage).toBe(errorMessage);
-  },
-);
-
-
 When('Fill Mandatory Petition Form for {string} {string}', async ({ page }, student, number) => {
   const petitionFormPage = new PetitionFormPage(page);
   await petitionFormPage.fillPetitionMandatoryFormFields(student, number);
