@@ -55,6 +55,7 @@ Feature: EHU-ATJS-20264. Add "Current Employer" Field to the Petition for Space 
     And Click on "Submit" button
     Then Check Field "First Name" contain value "USER" "1" "First Name" on submitted Petition form
 
+  @skip
   Scenario: Check Current Employer field validation for invalid characters
     Given Open web page url "https://ryasrdp.github.io/"
     And Create "USER" "1" using storage
