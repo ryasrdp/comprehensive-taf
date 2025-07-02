@@ -53,4 +53,11 @@ Feature: EHU-ATJS-20264. Add "Current Employer" Field to the Petition for Space 
     And Select "" value in "Current Employer" field on "Employment Information" section
     And Fill Mandatory Petition Form for "USER" "1"
     And Click on "Submit" button
-    Then Check Field "First Name" contain value "USER" "1" "First Name" on submitted Petition form 
+    Then Check Field "First Name" contain value "USER" "1" "First Name" on submitted Petition form
+
+  Scenario: Check Current Employer field validation for invalid characters
+    Given Open web page url "https://ryasrdp.github.io/"
+    And Create "USER" "1" using storage
+    Then Check field "Current Employer" is present on "Employment Information" section
+    And Select "Company@#$%" value in "Current Employer" field on "Employment Information" section
+    Then Verify tooltip "Field must contain valid characters." is displayed for "Current Employer" field 
