@@ -25,7 +25,7 @@ Feature: EHU-ATJS-20266. Add "Employer Address" Field in "Employment Information
  @skip
   # Temporarily skipped due to known bug: Employer Address accepts invalid characters
 
-  Scenario Outline: Check Employer Address field with invalid characters
+  Scenario Outline: Check Employer Address field with invalid <invalid_input> characters
     Given Open web page url "https://ryasrdp.github.io/"
     And Create "USER" "1" using storage
     And Select "<invalid_input>" value in "Employer Address" field on "Employment Information" section

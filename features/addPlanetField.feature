@@ -1,8 +1,8 @@
 @form
 Feature: EHU-ATJS-20258 - Add "Planet" Field to the Petition for Space Travel Form
 
-  As a user,  
-  I want to provide the name of my planet in the Petition for Space Travel form  
+  As a user,
+  I want to provide the name of my planet in the Petition for Space Travel form
   So that authorities can identify my specific place of origin within my solar system for better context and record-keeping.
 
   Scenario: Verify Planet field is displayed
@@ -13,7 +13,7 @@ Feature: EHU-ATJS-20258 - Add "Planet" Field to the Petition for Space Travel Fo
     Then Check section "Previous Travel Information" is present on "Petition to leave planet Earth" form
     Then Check field "Planet" is present on "Previous Travel Information" section
 
-  Scenario Outline: Submit with various valid Planet names
+  Scenario Outline: Submit with various valid Planet <planet_value> name
     Given Open web page url "https://ryasrdp.github.io/"
     And Create "USER" "X1" using storage
     Then Check field "Planet" is present on "Planned Travel Information" section
@@ -29,7 +29,7 @@ Feature: EHU-ATJS-20258 - Add "Planet" Field to the Petition for Space Travel Fo
       | Vega Prime     |
       | Planet X-42    |
 
-  Scenario Outline: Submit with special Planet values
+  Scenario Outline: Submit with special Planet value - <edge_value>
     Given Open web page url "https://ryasrdp.github.io/"
     And Create "USER" "X1" using storage
     Then Check field "Planet" is present on "Planned Travel Information" section
@@ -58,7 +58,7 @@ Feature: EHU-ATJS-20258 - Add "Planet" Field to the Petition for Space Travel Fo
   @skip
   # Temporarily skipped due to known bug: validation for the Planet field is not working
 
-  Scenario Outline: Submit invalid Planet field value and verify tooltip
+  Scenario Outline: Submit invalid Planet (<invalid_value>) field value and verify tooltip
     Given Open web page url "https://ryasrdp.github.io/"
     And Create "USER" "X1" using storage
     Then Check field "Planet" is present on "Planned Travel Information" section

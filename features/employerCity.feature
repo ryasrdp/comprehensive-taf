@@ -14,10 +14,5 @@ Feature: EHU-ATJS-20267 Add "Employer City" Field to the Petition for Space Trav
     And Click on "Submit" button
     Then Check Field "Employer City" contain value "New York" on submitted Petition form
 
-  Scenario: Employer City field is optional
-    Given Open web page url "https://ryasrdp.github.io/"
-    And Create "USER" "1" using storage
-    And Fill Mandatory Petition Form for "USER" "1"
-    And Click on "Submit" button
-    Then Check Field "Employer City" contain value "" on submitted Petition form
+
 

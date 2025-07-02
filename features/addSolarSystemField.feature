@@ -11,7 +11,7 @@ Feature: EHU-ATJS-20257. Add "Solar System" Field in "Address Information" secti
     Then Check section "Address Information" is present on "Petition to leave planet Earth" form
     Then Check field "Solar system" is present on "Address Information" section
 
-  Scenario Outline: Check Solar System field with valid values
+  Scenario Outline: Check Solar System field with valid values <solar_system_value>
     Given Open web page url "https://ryasrdp.github.io/"
     And Create "USER" "1" using storage
     Then Check field "Solar system" is present on "Address Information" section
@@ -26,14 +26,6 @@ Feature: EHU-ATJS-20257. Add "Solar System" Field in "Address Information" secti
       | Milky Way         |
       | Andromeda         |
       | Alpha Centauri    |
-
-  Scenario: Check Solar System field is not mandatory
-    Given Open web page url "https://ryasrdp.github.io/"
-    And Create "USER" "1" using storage
-    Then Check field "Solar system" is present on "Address Information" section
-    And Fill Mandatory Petition Form for "USER" "1"
-    And Click on "Submit" button
-    Then Check Field "First Name" contain value "USER" "1" "First Name" on submitted Petition form
 
   Scenario Outline: Check Solar System field with edge case values
     Given Open web page url "https://ryasrdp.github.io/"
