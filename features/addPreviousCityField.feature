@@ -26,3 +26,12 @@ Feature: EHU-ATJS-20261: Add "Previous City" Field to the Petition for Space Tra
     And Fill Mandatory Petition Form for "USER" "1"
     And Click on "Submit" button
     Then Check Field "Previous City" contain value "" on submitted Petition form
+
+  @skip
+  Scenario: Check validation for invalid characters in "Previous City" field
+    Given Open web page url "https://ryasrdp.github.io/"
+    And Create "USER" "1" using storage
+    And Fill Mandatory Petition Form for "USER" "1"
+    When Select "City123!@#" value in "Previous City" field on "Address Information" section
+    And Click on "Submit" button
+    Then Verify tooltip "Field must contain valid characters." is displayed for "Previous City" field on "Address Information" section

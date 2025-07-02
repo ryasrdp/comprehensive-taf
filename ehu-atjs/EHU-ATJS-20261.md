@@ -29,7 +29,19 @@ Currently, the Petition for Space Travel form captures the current city but does
 2. The "Address Information" section contains a checkbox labeled "I have lived at my current address for 2+ years".
 
 ## Automated Test Scenarios:
-### Scenario 1: Positive Path (Data Submission)
+
+### Scenario 1: Conditional Logic Verification (Documented Bug)
+
+#### Steps:
+
+1. Navigate to the form.
+2. (Expected Behavior) The "Previous City" field should be hidden by default.
+3. (Expected Behavior) Click the "I have lived at my current address for 2+ years" checkbox.
+4. (Expected Behavior) The "Previous City" field should become visible.
+
+##### Actual Result: The logic is inverted. The field is visible by default and hides upon clicking the checkbox.
+
+### Scenario 2: Positive Path (Data Submission)
 
 #### Steps:
 
@@ -41,7 +53,7 @@ Currently, the Petition for Space Travel form captures the current city but does
 
 ##### Expected Result: The final data table is displayed, and the "Previous City" column correctly shows the value "Tokyo".
 
-### Scenario 2: Optional Field Verification
+### Scenario 3: Optional Field Verification
 
 #### Steps:
 
@@ -52,14 +64,12 @@ Currently, the Petition for Space Travel form captures the current city but does
 
 ##### Expected Result: The form submits successfully. The "Previous City" column in the final data table is empty.
 
-### Scenario 3: Conditional Logic Verification (Documented Bug)
+### Scenario 4: Negative Path (Invalid Data Validation)
 
 #### Steps:
 
-1. Navigate to the form.
-2. (Expected Behavior) The "Previous City" field should be hidden by default.
-3. (Expected Behavior) Click the "I have lived at my current address for 2+ years" checkbox.
-4. (Expected Behavior) The "Previous City" field should become visible.
+1. Navigate to the "Petition for Space Travel" form.
+2. Enter "City123!@#" into the "Previous City" field.
+3. Click the "Submit" button.
 
-##### Actual Result: The logic is inverted. The field is visible by default and hides upon clicking the checkbox.
-
+##### Expected Result: A tooltip with the error message "Field must contain valid characters." is displayed for the "Previous City" field.
