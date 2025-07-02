@@ -20,3 +20,15 @@ Feature: EHU-ATJS-20280. Add "Year of Graduation" Field in "Education Informatio
       | 2000       |
       | 1995       |
       | 2025       |
+
+ @skip
+   Scenario Outline: Check field "Year of Graduation" with invalid inputs (indirect validation)
+    Given Open web page url "https://ryasrdp.github.io/"
+    And Select "<invalid_value>" value in "Year of Graduation" field on "Education Information" section
+    Then Click on "Submit" button
+    Then Check section "Education Information" is present on "Petition to leave planet Earth" form
+
+  Examples:
+    | invalid_value |
+    | 1899          |
+    | 3000          |
