@@ -44,15 +44,10 @@ Currently, the Petition for Space Travel form does not include a field for speci
 
 ### Positive Test Cases:
 
-#### TC-000: Field Visibility
+#### TC-001: Field Visibility
 
 - **Steps:** Navigate to form → Locate Education Information section
 - **Expected:** Minor (if applicable) field is visible and accessible
-
-#### TC-001: Placeholder Visibility
-
-- **Steps:** Navigate to form → Locate Education Information section
-- **Expected:** A placeholder should be displayed
 
 #### TC-002: Valid Input - Basic Text
 
@@ -74,14 +69,18 @@ Currently, the Petition for Space Travel form does not include a field for speci
 - **Steps:** Fill required fields + Minor (if applicable) → Submit
 - **Expected:** Submitted data appears in output table
 
+#### TC-006: Form Submission without Minor (if applicable) field
+- **Steps:** Fill only mandatory fields -> Submit
+- **Expected:** Form submits successfully (field not mandatory)
+
 ### Negative Test Cases:
 
-#### TC-006: Invalid Characters - Special/Unicode
+#### TC-007: Invalid Characters - Special/Unicode
 
 - **Steps:** Enter "Astro@!学"
 - **Expected:** Validation error: _"Field must contain valid characters."_
 
-#### TC-007: Invalid Characters - Emojis
+#### TC-008: Invalid Characters - Emojis
 
 - **Steps:** Enter "Physics 🥼🧪"
 - **Expected:** Validation error: _"Field must contain valid characters."_
@@ -111,38 +110,28 @@ Currently, the Petition for Space Travel form does not include a field for speci
 ### Scenario 1: Field Visibility Testing
 
 - Ensures field appears in correct form section
-- Covers TC-000
-
-### Scenario 2: Field Visibility Testing
-
-- Ensures placeholder appears in correct form input
 - Covers TC-001
 
-### Scenario 3: Positive Testing with Valid Inputs (3 test cases)
+### Scenario 2: Positive Testing with Valid Inputs (3 test cases)
 
 - Inputs include academic disciplines with allowed formatting
 - Confirms successful submission and proper data display
 - Covers TC-002, TC-005
 
-### Scenario 4: Optional Field Verification
-
-- Tests submission flow when field is left empty
-- Covers TC-005
-
-### Scenario 5: Edge Case Testing (4 test cases)
+### Scenario 3: Edge Case Testing (5 test cases)
 
 - Tests boundary values (single character, numbers, allowed symbols)
 - Verifies edge cases are handled correctly
 - Covers TC-003, TC-004
 
-### Scenario 6: Negative Input Validation (2 test cases)
+### Scenario 4: Negative Input Validation (4 test cases)
 
 - Tests invalid inputs and validation error feedback
-- Covers TC-006, TC-007
+- Covers TC-007, TC-008
 
 ---
 
-**Total: 12 automated test cases covering positive, negative, and edge scenarios.**
+**Total: 13 automated test cases covering positive, negative, and edge scenarios.**
 
 ---
 
