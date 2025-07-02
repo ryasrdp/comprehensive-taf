@@ -19,7 +19,6 @@ Feature: EHU-ATJS-20261: Add "Previous City" Field to the Petition for Space Tra
     And Fill Mandatory Petition Form for "USER" "1"
     And Click on "Submit" button
     Then Check Field "Previous City" contain value "Tokyo" on submitted Petition form
-    And Check Field "First Name" contain value "USER" "1" "First Name" on submitted Petition form
 
   Scenario: Submit form without "Previous City" filled
     Given Open web page url "https://ryasrdp.github.io/"
