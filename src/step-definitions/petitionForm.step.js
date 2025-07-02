@@ -70,8 +70,35 @@ When('Fill Mandatory Petition Form for {string} {string}', async ({ page }, stud
   await petitionFormPage.fillPetitionMandatoryFormFields(student, number);
 });
 
+
+
 Then('Uncheck checkbox {string} on {string} section', async ({ page }, checkboxLabel) => {
   const petitionFormPage = new PetitionFormPage(page);
   await petitionFormPage.uncheckCheckboxByLabel(checkboxLabel);
 });
 
+
+
+When(
+  /^Fill "([^"]*)" field with "([^"]*)" on "([^"]*)" section$/,
+  async ({ page }, fieldName, value, sectionName) => {
+    const petitionFormPage = new PetitionFormPage(page);
+    const fieldLocator = petitionFormPage.fieldOnSectionLocator(sectionName, fieldName);
+    const input = fieldLocator.locator('..//input | ..//textarea');
+    await input.fill(value);
+  },
+);
+
+
+// Then(
+//   /^Check validation error "([^"]*)" is displayed for "([^"]*)" field$/,
+//   async ({ page }, errorMessage, fieldName) => {
+//     const petitionFormPage = new PetitionFormPage(page);
+
+//     const isErrorVisible = await petitionFormPage.isValidationErrorVisible(fieldName);
+//     expect(isErrorVisible).toBeTruthy();
+
+//     const actualErrorMessage = await petitionFormPage.getValidationErrorMessage(fieldName);
+//     expect(actualErrorMessage).toBe(errorMessage);
+//   },
+// );

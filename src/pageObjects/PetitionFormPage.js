@@ -119,3 +119,4 @@ return null;
   return await errorLocator.textContent();
 }
 }
+
