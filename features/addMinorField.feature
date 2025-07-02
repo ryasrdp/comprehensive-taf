@@ -27,6 +27,7 @@ So that authorities can understand my additional academic focus and evaluate my 
       | Philosophy        |
     
   Scenario Outline: Check field "Minor (if applicable)" with <edge_value> values
+    Given Open web page url "https://ryasrdp.github.io/"
     And Create "USER" "1" using storage
     And Select "<edge_value>" value in "Minor (if applicable)" field on "Education Information" section
     And Fill Mandatory Petition Form for "USER" "1"
