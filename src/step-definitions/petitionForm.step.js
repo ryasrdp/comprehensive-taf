@@ -72,14 +72,6 @@ When('Fill Mandatory Petition Form for {string} {string}', async ({ page }, stud
 
 
 
-When(
-  /^Fill "([^"]+)" field on "([^"]+)" section with value "([^"]+)"$/,
-  async ({ page }, fieldName, sectionName, value) => {
-    const petitionFormPage = new PetitionFormPage(page);
-    await petitionFormPage.fillFieldInSection(sectionName, fieldName, value);
-  },
-);
-
 Then('Uncheck checkbox {string} on {string} section', async ({ page }, checkboxLabel) => {
   const petitionFormPage = new PetitionFormPage(page);
   await petitionFormPage.uncheckCheckboxByLabel(checkboxLabel);
@@ -109,3 +101,4 @@ When(
 //     expect(actualErrorMessage).toBe(errorMessage);
 //   },
 // );
+

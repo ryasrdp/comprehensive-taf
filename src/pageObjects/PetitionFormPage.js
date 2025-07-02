@@ -100,12 +100,5 @@ export default class PetitionFormPage extends BasePage {
       return false;
     }
   }
-
-    async fillFieldInSection(sectionName, fieldName, value) {
-    const fieldLocator = this.page.locator(
-      `//*[@class="section-title" and contains(text(),"${sectionName}")]/..//label[contains(text(),"${fieldName}")]
-      /following-sibling::*[1]`,
-    );
-    await fieldLocator.fill(value);
-  }
 }
+
