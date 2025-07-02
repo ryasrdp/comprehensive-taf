@@ -9,7 +9,6 @@ Feature: EHU-ATJS-20265. Add "Work Phone" Field in "Employment Information" sect
     Given Open web page url "https://ryasrdp.github.io/"
     And Create "USER" "1" using storage
     Then Check section "Employment Information" is present on "Petition to leave planet Earth" form
-    # And Fill "<work_phone>" in "Work Phone" field on "Employment Information" section
     And Select "<work_phone>" value in "Work Phone" field on "Employment Information" section
     And Fill Mandatory Petition Form for "USER" "1"
     And Click on "Submit" button
