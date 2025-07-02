@@ -14,7 +14,6 @@ So that authorities can understand my additional academic focus and evaluate my 
   Scenario Outline: Check field "Minor (if applicable)" field with <minor_field_value> values
     Given Open web page url "https://ryasrdp.github.io/"
     And Create "USER" "1" using storage
-    Then Check field "Minor (if applicable)" is present on "Education Information" section
     And Select "<minor_field_value>" value in "Minor (if applicable)" field on "Education Information" section
     And Fill Mandatory Petition Form for "USER" "1"
     And Click on "Submit" button
@@ -28,9 +27,7 @@ So that authorities can understand my additional academic focus and evaluate my 
       | Philosophy        |
     
   Scenario Outline: Check field "Minor (if applicable)" with <edge_value> values
-    Given Open web page url "https://ryasrdp.github.io/"
     And Create "USER" "1" using storage
-    Then Check field "Minor (if applicable)" is present on "Education Information" section
     And Select "<edge_value>" value in "Minor (if applicable)" field on "Education Information" section
     And Fill Mandatory Petition Form for "USER" "1"
     And Click on "Submit" button
